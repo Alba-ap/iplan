@@ -1,0 +1,127 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"); */
+@font-face {
+  font-family: "Yekan";
+  src: url("./fonts/Yekan.ttf") format("truetype"); /* Adjust path and format as needed */
+}
+body {
+  font-family: "Yekan" !important;
+}
+html,
+#root,
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+  font-family: "Yekan" !important; /* Use your custom font family */
+  direction: rtl;
+}
+
+.app {
+  display: flex;
+  position: relative;
+  direction: rtl;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.mtfont {
+  font-family: "Yekan";
+}
+
+.fontstyle {
+  font-family: "Yekan";
+  font-size: "2rem";
+}
+
+.todolist-btn {
+  background-color: #6870fa;
+  width: "2rem";
+  color: white;
+}
+
+.cetralize {
+  align-items: center;
+  justify-content: center;
+  margin-right: 35rem;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.todo-icons {
+  display: flex;
+  align-items: center;
+}
+
+.todo-text {
+  flex-grow: 1;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 23px;
+  height: 15px;
+  border: 2px solid #6870fa;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #6870fa;
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.margin-r {
+  margin-right: 3rem;
+}
+
+.centalize {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.view-budget-total {
+  width: 350px;
+  height: 120px;
+  border-radius: 8px;
+  background-color: #f3f1f1;
+  box-shadow: 0 8px 16px rgba(104, 112, 250, 0.5);
+}
