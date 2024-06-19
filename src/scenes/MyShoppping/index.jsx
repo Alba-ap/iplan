@@ -1,88 +1,96 @@
+// src/components/TodoList.js
 import React, { useState } from "react";
-import styled from "styled-components";
-import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  IconButton,
-} from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import MeatIcon from "@mui/icons-material/Restaurant";
-import VeggiesIcon from "@mui/icons-material/EmojiNature";
-import DrinksIcon from "@mui/icons-material/LocalDrink";
-
-const categories = [
-  { id: "meat", name: "Meat", icon: <MeatIcon /> },
-  { id: "veggies", name: "Veggies", icon: <VeggiesIcon /> },
-  { id: "drinks", name: "Drinks", icon: <DrinksIcon /> },
-];
-
-const ShoppingListContainer = styled.div`
-  width: 400px;
-  margin: 0 auto;
-`;
-
-const CategoryContainer = styled.div`
-  margin: 20px 0;
-`;
-
-const CategoryTitle = styled(Typography)`
-  margin-bottom: 10px;
-`;
+import { Button, TextField } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import ShoppingList from "./shoppinglist";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 const MyShopping = () => {
-  const [items, setItems] = useState({
-    meat: ["Chicken", "Beef"],
-    veggies: ["Carrot", "Broccoli"],
-    drinks: ["Milk", "Juice"],
-  });
+  const [todos, setTodos] = useState([]);
+  const [inputText, setInputText] = useState("");
 
-  const handleAddItem = (categoryId) => {
-    const item = prompt("Enter item name:");
-    if (item) {
-      setItems({
-        ...items,
-        [categoryId]: [...items[categoryId], item],
-      });
+  const addTodo = () => {
+    if (inputText.trim() !== "") {
+      setTodos([...todos, { text: inputText, done: false }]);
+      setInputText("");
     }
   };
 
-  const handleDeleteItem = (categoryId, itemIndex) => {
-    setItems({
-      ...items,
-      [categoryId]: items[categoryId].filter((_, index) => index !== itemIndex),
-    });
+  const deleteTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  const editTodo = (index, newText) => {
+    const newTodos = [...todos];
+    newTodos[index].text = newText;
+    setTodos(newTodos);
+  };
+
+  const toggleDone = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].done = !newTodos[index].done;
+    setTodos(newTodos);
   };
 
   return (
-    <ShoppingListContainer>
-      {categories.map((category) => (
-        <CategoryContainer key={category.id}>
-          <CategoryTitle variant="h6">
-            <ListItemIcon>{category.icon}</ListItemIcon>
-            {category.name}
-            <IconButton onClick={() => handleAddItem(category.id)}>
-              <AddIcon />
-            </IconButton>
-          </CategoryTitle>
-          <List>
-            {items[category.id].map((item, index) => (
-              <ListItem key={index}>
-                <ListItemText primary={item} />
-                <IconButton
-                  onClick={() => handleDeleteItem(category.id, index)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItem>
-            ))}
-          </List>
-        </CategoryContainer>
-      ))}
-    </ShoppingListContainer>
+    <>
+      <div
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: "20rem",
+        }}
+      >
+        <h1>
+          لیست خرید من
+          <LocalMallIcon style={{ fontSize: "2rem", marginRight: "38rem" }} />
+        </h1>
+        <TextField
+          variant="filled"
+          type="text"
+          label="افزودن کالا"
+          sx={{
+            gridColumn: "span 10",
+            width: "50rem",
+            fontFamily: "Yekan",
+            fontSize: "5rem",
+          }}
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <Button
+          sx={{
+            marginBottom: "1rem",
+            backgroundColor: "#6870fa",
+            color: "#fff",
+            fontSize: "18px",
+            fontWeight: "bold",
+            padding: "8px 30px",
+            borderRadius: "100px",
+            fontFamily: "Yekan",
+            marginRight: "1rem",
+          }}
+          onClick={addTodo}
+        >
+          افرودن
+          <AddCircleIcon style={{ marginRight: "0.5rem" }} />
+        </Button>
+        {todos.map((todo, index) => (
+          <div style={{ width: "50rem" }}>
+            <ShoppingList
+              key={index}
+              index={index}
+              todo={todo}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+              toggleDone={toggleDone}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

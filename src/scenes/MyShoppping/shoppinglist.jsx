@@ -4,9 +4,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Input } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { TextField } from "@mui/material";
-
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import SaveAsSharpIcon from "@mui/icons-material/SaveAsSharp";
-const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
+const ShoppingList = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(todo.text);
 
@@ -18,7 +18,7 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
   return (
     <div>
       {isEditing ? (
-        <div>
+        <div style={{ display: "flex" }}>
           <TextField
             variant="filled"
             type="text"
@@ -28,7 +28,7 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
               marginTop: "2rem",
               borderRadius: "18px",
               gridColumn: "span 10",
-              width: "30rem",
+              width: "50rem",
               fontFamily: "Yekan",
               fontSize: "2rem",
             }}
@@ -50,7 +50,7 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
       ) : (
         <div
           style={{
-            width: "30rem",
+            width: "50rem",
 
             boxShadow: "0 4px 8px rgba(104, 112, 250, 0.5)", // Shadow with color #6870fa
             borderRadius: "18px",
@@ -60,22 +60,23 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
           }}
         >
           <div className="checkbox-container">
-            <Input
-              type="checkbox"
-              checked={todo.done}
-              onChange={() => toggleDone(index)}
-            />
+            <LocalOfferIcon />
             <span
               className="todo-text"
               style={{
                 textDecoration: todo.done ? "line-through" : "none",
                 fontFamily: "Yekan",
-                fontSize: "1rem",
+                fontSize: "1.2rem",
               }}
             >
               {todo.text}
             </span>
             <div className="todo-icons">
+              <Input
+                type="checkbox"
+                checked={todo.done}
+                onChange={() => toggleDone(index)}
+              />
               <ModeEditIcon
                 sx={{
                   backgroundColor: "transparent",
@@ -86,6 +87,7 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
                 }}
                 onClick={() => setIsEditing(true)}
               />
+
               <DeleteIcon
                 sx={{
                   backgroundColor: "transparent",
@@ -104,4 +106,4 @@ const Todo = ({ todo, index, toggleDone, editTodo, deleteTodo }) => {
   );
 };
 
-export default Todo;
+export default ShoppingList;
