@@ -9,13 +9,12 @@ import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
-import ProgressCircle from "../../components/ProgressCircle";
-
 import TodoList from "../list/todolist";
 import Pomodoro from "../pomodoro/pomodoro";
-
+import React, { useState } from "react";
 const Dashboard = () => {
   const theme = useTheme();
+
   const colors = tokens(theme.palette.mode);
 
   return (
@@ -23,7 +22,7 @@ const Dashboard = () => {
       <Box m="20px">
         {/* HEADER */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Header title="داشبورد من" subtitle="به داشبورد خودت خوش اومدی!" />
+          <Header title="داشبورد من" subtitle={"به داشبورد خودت خوش اومدی!"} />
 
           <Box>
             <Button
@@ -34,6 +33,7 @@ const Dashboard = () => {
                 padding: "10px 20px",
                 color: "#fff",
                 fontFamily: "Yekan",
+                borderRadius:"2rem"
               }}
             >
               <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -56,6 +56,8 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
+            sx={{borderEndStartRadius:"3rem"}}
+
           >
             <StatBox
               title="انجام شده در برنامه لیست من"
@@ -73,6 +75,8 @@ const Dashboard = () => {
             alignItems="center"
             justifyContent="center"
             fontFamily="Yekan"
+            sx={{borderEndStartRadius:"3rem"}}
+
           >
             <StatBox
               sx={{ color: "#868cfb", fontSize: "40px" }}
@@ -92,6 +96,8 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
+            sx={{borderEndStartRadius:"3rem"}}
+
           >
             <StatBox
               subtitle="5 کار انجام شده"
@@ -109,7 +115,8 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            sx={{ color: "#868cfb" }}
+            sx={{ color: "#868cfb",borderEndStartRadius:"3rem" }}
+
           >
             <StatBox
               subtitle="3 کار انجام شده"
@@ -122,9 +129,11 @@ const Dashboard = () => {
 
           {/* ROW 2 */}
           <Box
-            gridColumn="span 6"
+            gridColumn="span 7"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
+            sx={{borderRadius:"1rem"}}
+
           >
             <Box
               mt="25px"
@@ -150,28 +159,27 @@ const Dashboard = () => {
               <LineChart isDashboard={true} />
             </Box>
           </Box>
-          <Box
-            gridColumn="span 6"
-            gridRow="span 3"
-            backgroundColor={colors.primary[400]}
-            overflow="auto"
-          >
+        
             <Box
-              gridColumn="span 6"
+              gridColumn="span 5"
               gridRow="span 3"
               backgroundColor={colors.primary[400]}
-              padding="30px"
+              padding="15px"
+              sx={{borderRadius:"1rem"}}
+
             >
               <Pomodoro />
-              <Box height="200px"></Box>
+           
             </Box>
-          </Box>
+         
           {/* ROW 3 */}
 
           <Box
-            gridColumn="span 6"
+            gridColumn="span 7"
             gridRow="span 3"
             backgroundColor={colors.primary[400]}
+            sx={{borderRadius:"1rem"}}
+
           >
             <Typography
               variant="h5"
@@ -185,10 +193,12 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box
-            gridColumn="span 6"
+            gridColumn="span 5"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
             overflow="auto"
+            sx={{borderRadius:"1rem"}}
+
           >
             <Box
               display="flex"

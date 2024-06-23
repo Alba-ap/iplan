@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -17,6 +17,8 @@ import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import DateRangeRoundedIcon from "@mui/icons-material/DateRangeRounded";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
+import Username from "./UserName";  // Import the Username component
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -43,6 +45,7 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("");
+  const [username, setUsername] = useState("کاربر آی پلن");  // Default username
 
   return (
     <Box
@@ -58,14 +61,15 @@ const Sidebar = () => {
         },
         "& .pro-inner-item:hover": {
           color: "#f4bc1c !important",
-          width: "10rem",
         },
         "& .pro-menu-item.active": {
           color: "#fff !important",
           backgroundColor: "#6870fa !important",
-          borderRadius: "30px",
           fontSize: "3rem",
           fontFamily: "Yekan",
+          width: "264px",
+          borderEndEndRadius:"2rem", // Adjust the width as needed
+          transition: "width 0.3s ease", // Smooth transition for width change
         },
       }}
     >
@@ -75,7 +79,6 @@ const Sidebar = () => {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
-              // margin: "10px 0 20px 0",
               color: colors.grey[100],
               textAlign: "center",
             }}
@@ -106,7 +109,7 @@ const Sidebar = () => {
                     color: "#6870fa",
                   }}
                 >
-                  زهرا اکبرپور
+                  {username}
                 </h1>
                 <h4 style={{ color: "#868cfb" }}>آی پلن توسعه فردی من</h4>
               </Box>
@@ -115,7 +118,7 @@ const Sidebar = () => {
 
           <Box style={{ direction: "rtl", marginLeft: "6rem" }}>
             <Item
-              style={{ marginLeft: "6rem" }}
+              style={{ marginLeft: "7rem" }}
               className="fontstyle"
               direction="rtl"
               title="خانه"
@@ -201,6 +204,7 @@ const Sidebar = () => {
           </Box>
         </Menu>
       </ProSidebar>
+      <Username setUsername={setUsername} />
     </Box>
   );
 };
