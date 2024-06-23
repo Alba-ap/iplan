@@ -201,11 +201,10 @@ const MyMusic = () => {
               height: { xs: "100%", sm: 300 },
               borderRadius: "50%",
               marginRight: "3rem",
-              boxShadow: `
-              0 8px 16px rgba(0, 123, 255, 0.3),
-              0 12px 24px rgba(0, 123, 255, 0.2),
-              0 16px 32px rgba(0, 123, 255, 0.1)
-            `,
+              boxShadow: `-2px 0px 83px 23px rgba(104,112,250,0.52)`,
+              WebkitBoxShadow: ` -2px 0px 83px 23px rgba(104,112,250,0.52)`,
+              MozBoxShadow: ` -2px 0px 83px 23px rgba(104,112,250,0.52)`
+              
             }}
           />
 

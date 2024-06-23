@@ -17,9 +17,12 @@
   align-items: center;
   justify-content: center;
   border: 4px solid #6870fa;
-  border-radius: 62% 38% 15% 85% / 65% 74% 26% 35%;
-  box-shadow: 0 32px 24px rgba(104, 112, 250, 0.5);
-}
+  border-radius: 72px 200px 200px 200px;
+  -webkit-border-radius: 72px 200px 200px 200px;
+  -moz-border-radius: 72px 200px 200px 200px;
+  box-shadow: -2px 0px 83px 23px rgba(104,112,250,0.54);
+  -webkit-box-shadow: -2px 0px 83px 23px rgba(104,112,250,0.54);
+  -moz-box-shadow: -2px 0px 83px 23px rgba(104,112,250,0.54);}
 #timer-label {
   font-size: 1.5rem;
   font-weight: 700;
@@ -31,6 +34,6 @@
 }
 @keyframes spin {
   100% {
-    transform: rotate(1turn);
+    transform: rotate(3turn);
   }
 }

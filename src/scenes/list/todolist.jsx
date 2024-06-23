@@ -1,10 +1,9 @@
-// src/components/TodoList.js
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Todo from "./todo";
 
-const TodoList = () => {
+const TodoList = ({ textfieldSize }) => {
   const [todos, setTodos] = useState([]);
   const [inputText, setInputText] = useState("");
 
@@ -41,7 +40,7 @@ const TodoList = () => {
         label="برنامه من"
         sx={{
           gridColumn: "span 10",
-          width: "30rem",
+          width: textfieldSize ? `${textfieldSize}px` : "30rem", 
           fontFamily: "Yekan",
           fontSize: "2rem",
         }}
@@ -66,6 +65,7 @@ const TodoList = () => {
         افرودن
         <AddCircleIcon style={{ marginRight: "0.5rem" }} />
       </Button>
+
       {todos.map((todo, index) => (
         <Todo
           key={index}

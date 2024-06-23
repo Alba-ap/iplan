@@ -1,9 +1,9 @@
+import React from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import EmailIcon from "@mui/icons-material/Email";
-import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import WalletIcon from '@mui/icons-material/Wallet';
 import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
@@ -11,15 +11,30 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import TodoList from "../list/todolist";
 import Pomodoro from "../pomodoro/pomodoro";
-import React, { useState } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+
 const Dashboard = () => {
   const theme = useTheme();
-
   const colors = tokens(theme.palette.mode);
+
+  const downloadPdf = async () => {
+    const input = document.getElementById("dashboard-content");
+    const canvas = await html2canvas(input);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("dashboard-report.pdf");
+  };
 
   return (
     <div style={{ fontFamily: "Yekan" }}>
-      <Box m="20px">
+      <Box m="20px" id="dashboard-content">
         {/* HEADER */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Header title="داشبورد من" subtitle={"به داشبورد خودت خوش اومدی!"} />
@@ -33,8 +48,9 @@ const Dashboard = () => {
                 padding: "10px 20px",
                 color: "#fff",
                 fontFamily: "Yekan",
-                borderRadius:"2rem"
+                borderRadius: "2rem"
               }}
+              onClick={downloadPdf}
             >
               <DownloadOutlinedIcon sx={{ mr: "10px" }} />
               دانلود گزارش کلی من
@@ -56,15 +72,14 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            sx={{borderEndStartRadius:"3rem"}}
-
+            sx={{ borderEndStartRadius: "3rem" }}
           >
             <StatBox
-              title="انجام شده در برنامه لیست من"
+              title="انجام شده در برنامه کاری من"
               subtitle="12 کار انجام شده"
               progress="0.75"
               increase="+14%"
-              icon={<EmailIcon sx={{ color: "#868cfb", fontSize: "30px" }} />}
+              icon={<HomeRepairServiceIcon sx={{ color: "#868cfb", fontSize: "30px" }} />}
             />
           </Box>
           <Box
@@ -75,18 +90,17 @@ const Dashboard = () => {
             alignItems="center"
             justifyContent="center"
             fontFamily="Yekan"
-            sx={{borderEndStartRadius:"3rem"}}
-
+            sx={{ borderEndStartRadius: "3rem" }}
           >
             <StatBox
               sx={{ color: "#868cfb", fontSize: "40px" }}
               fontFamily="Yekan"
-              subtitle="750,000 تومان"
-              title="باقی مانده بودجه"
+              subtitle="5 کار انجام شده"
+              title="انجام شده در برنامه درسی من"
               progress="0.70"
               increase="+21%"
               icon={
-                <PointOfSaleIcon sx={{ color: "#868cfb", fontSize: "30px" }} />
+                <MenuBookRoundedIcon sx={{ color: "#868cfb", fontSize: "30px" }} />
               }
             />
           </Box>
@@ -96,16 +110,15 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            sx={{borderEndStartRadius:"3rem"}}
-
+            sx={{ borderEndStartRadius: "3rem" }}
           >
             <StatBox
-              subtitle="5 کار انجام شده"
-              title=" انجام شده در برنامه کاری من"
+              subtitle="3 خرید انجام شده"
+              title=" انجام شده در لیست خرید من"
               progress="0.30"
               increase="+5%"
               icon={
-                <PersonAddIcon sx={{ color: "#868cfb", fontSize: "30px" }} />
+                <LocalMallIcon sx={{ color: "#868cfb", fontSize: "30px" }} />
               }
             />
           </Box>
@@ -115,15 +128,14 @@ const Dashboard = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            sx={{ color: "#868cfb",borderEndStartRadius:"3rem" }}
-
+            sx={{ color: "#868cfb", borderEndStartRadius: "3rem" }}
           >
             <StatBox
-              subtitle="3 کار انجام شده"
-              title="انجام شده در برنامه درسی من"
+              subtitle=" باقی مانده : 2800,000 T"
+              title="بـــودجه بندی من"
               progress="0.80"
               increase="+43%"
-              icon={<TrafficIcon sx={{ color: "#868cfb", fontSize: "30px" }} />}
+              icon={<WalletIcon sx={{ color: "#868cfb", fontSize: "30px" }} />}
             />
           </Box>
 
@@ -132,8 +144,7 @@ const Dashboard = () => {
             gridColumn="span 7"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
-            sx={{borderRadius:"1rem"}}
-
+            sx={{ borderRadius: "1rem" }}
           >
             <Box
               mt="25px"
@@ -159,27 +170,24 @@ const Dashboard = () => {
               <LineChart isDashboard={true} />
             </Box>
           </Box>
-        
-            <Box
-              gridColumn="span 5"
-              gridRow="span 3"
-              backgroundColor={colors.primary[400]}
-              padding="15px"
-              sx={{borderRadius:"1rem"}}
 
-            >
-              <Pomodoro />
-           
-            </Box>
-         
+          <Box
+            gridColumn="span 5"
+            gridRow="span 3"
+            backgroundColor={colors.primary[400]}
+            padding="15px"
+            sx={{ borderRadius: "1rem" }}
+          >
+            <Pomodoro />
+          </Box>
+
           {/* ROW 3 */}
 
           <Box
             gridColumn="span 7"
             gridRow="span 3"
             backgroundColor={colors.primary[400]}
-            sx={{borderRadius:"1rem"}}
-
+            sx={{ borderRadius: "1rem" }}
           >
             <Typography
               variant="h5"
@@ -197,8 +205,7 @@ const Dashboard = () => {
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
             overflow="auto"
-            sx={{borderRadius:"1rem"}}
-
+            sx={{ borderRadius: "1rem" }}
           >
             <Box
               display="flex"
@@ -223,8 +230,8 @@ const Dashboard = () => {
               p="15px"
               style={{ marginRight: "3rem" }}
             >
-              <TodoList />
-            </Box>
+<TodoList textfieldSize={400} />     
+      </Box>
           </Box>
         </Box>
       </Box>

@@ -3,21 +3,20 @@ import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import ProfilePicturePicker from "../profile";
-import SegmentRoundedIcon from "@mui/icons-material/SegmentRounded";
 import WalletOutlinedIcon from "@mui/icons-material/WalletOutlined";
 import ThunderstormOutlinedIcon from "@mui/icons-material/ThunderstormOutlined";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import DateRangeRoundedIcon from "@mui/icons-material/DateRangeRounded";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
-import Username from "./UserName";  // Import the Username component
+import Username from "./UserName"; 
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -68,8 +67,8 @@ const Sidebar = () => {
           fontSize: "3rem",
           fontFamily: "Yekan",
           width: "264px",
-          borderEndEndRadius:"2rem", // Adjust the width as needed
-          transition: "width 0.3s ease", // Smooth transition for width change
+          borderEndEndRadius:"2rem",
+          transition: "width 0.3s ease", 
         },
       }}
     >
@@ -139,7 +138,7 @@ const Sidebar = () => {
               direction="rtl"
               title="برنامه کاری من"
               to="/myworkplan"
-              icon={<AssignmentRoundedIcon />}
+              icon={<HomeRepairServiceIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -195,7 +194,7 @@ const Sidebar = () => {
             />
             <Item
               direction="rtl"
-              title="لیست موسیقی های من "
+              title="موسیقی های من"
               to="/mymusics"
               icon={<MusicNoteIcon />}
               selected={selected}
