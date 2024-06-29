@@ -1,137 +1,94 @@
-import { useTheme } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
-import { tokens } from "../theme";
-import { mockBarData as data } from "../data/mockData";
+// BarChart.js
+import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
 
-const BarChart = ({ isDashboard = false }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+const BarChart = () => {
+  const data = {
+    labels: ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'],
+    datasets: [
+      {
+        label: 'انجام شده ها',
+        backgroundColor: 'rgb(144, 238, 144)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(75,192,192,0.4)',
+        hoverBorderColor: 'rgba(75,192,192,1)',
+        data: [65, 59, 80, 81, 56, 55],
+      },
+      {
+        label: 'انجام نشده ها',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+        hoverBorderColor: 'rgba(255,99,132,1)',
+        data: [28, 48, 40, 19, 86, 27],
+      },
+    ],
+  };
+
+  const options = {
+    indexAxis: 'y', // Change this to 'x' if you want horizontal bars
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 14, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'میزان',
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 16, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+        ticks: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 12, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+      },
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'روزهای هفته',
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 16, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+        ticks: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 12, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+      },
+    },
+  };
 
   return (
-    <ResponsiveBar
-      data={data}
-      theme={{
-        // added
-        axis: {
-          domain: {
-            line: {
-              stroke: colors.grey[100],
-            },
-          },
-          legend: {
-            text: {
-              fill: colors.grey[100],
-            },
-          },
-          ticks: {
-            line: {
-              stroke: colors.grey[100],
-              strokeWidth: 1,
-            },
-            text: {
-              fill: colors.grey[100],
-            },
-          },
-        },
-        legends: {
-          text: {
-            fill: colors.grey[100],
-          },
-        },
-      }}
-      keys={[
-        "شنبه",
-        "یکشنبه",
-        "دوشنبه",
-        "سه شنبه",
-        "چهارشنبه",
-        "پنج شنبه",
-        "جمعه",
-      ]}
-      indexBy="country"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-      padding={0.3}
-      valueScale={{ type: "linear" }}
-      indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 6,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", "1.6"]],
-      }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "country", // changed
-        legendPosition: "middle",
-        legendOffset: 32,
-      }}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
-        legendPosition: "middle",
-        legendOffset: -40,
-      }}
-      enableLabel={false}
-      labelSkipWidth={12}
-      labelSkipHeight={12}
-      labelTextColor={{
-        from: "color",
-        modifiers: [["darker", 1.6]],
-      }}
-      legends={[
-        {
-          dataFrom: "keys",
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 120,
-          translateY: 0,
-          itemsSpacing: 2,
-          itemWidth: 100,
-          itemHeight: 20,
-          itemDirection: "left-to-right",
-          itemOpacity: 0.85,
-          symbolSize: 20,
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
-      ]}
-      role="application"
-      barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
-      }}
-    />
+    <div className='mtfont' style={{ width: '80%', maxWidth: '1200px', margin: '0 auto' }}>
+      <Bar data={data} options={options} />
+    </div>
   );
 };
 

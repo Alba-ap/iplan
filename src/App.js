@@ -12,7 +12,6 @@ import Pomodoro from "./scenes/pomodoro/pomodoro";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
-import MyStudyPlan from "./scenes/My StudyPlan";
 import MyWorkPlan from "./scenes/MyWorkList";
 import MyMusic from "./scenes/My Musics/index";
 import MyMovies from "./scenes/MyMovies/Mymovies";
@@ -34,7 +33,6 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/mybudget" element={<MyBudget />} />
               <Route path="/myworkplan" element={<MyWorkPlan />} />
-              <Route path="/mystudyplan" element={<MyStudyPlan />} />
               <Route path="/mytodolist" element={<Form />} />
               <Route path="/mychart" element={<MyTracker />} />
               <Route path="/mycalendar" element={<Calendar />} />

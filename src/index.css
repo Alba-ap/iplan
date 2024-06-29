@@ -123,5 +123,6 @@ html,
   height: 120px;
   border-radius: 8px;
   background-color: #f3f1f1;
-  box-shadow: 0 8px 16px rgba(104, 112, 250, 0.5);
+  border: solid 1px;
+  /* box-shadow: 0 8px 16px rgba(104, 112, 250, 0.5); */
 }

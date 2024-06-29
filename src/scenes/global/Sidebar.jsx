@@ -142,14 +142,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="برنامه درسی من"
-              fontFamily="Yekan"
-              to="/mystudyplan"
-              icon={<MenuBookRoundedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+           
 
             <Item
               direction="rtl"

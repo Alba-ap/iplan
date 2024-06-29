@@ -1,116 +1,104 @@
-import { ResponsiveLine } from "@nivo/line";
-import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
-import { mockLineData as data } from "../data/mockData";
+// LineChart.js
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 
-const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+// Register the required components for Chart.js
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+const datasets = [
+  { label: 'فروردین', data: [102046, 435990, 2417655, 217343, 2430352, 15149, 100000], borderColor: 'rgb(93, 63, 211)' },
+  { label: 'اردیبهشت', data: [1146591, 2678425, 404509, 214476, 1070103, 2076517, 2569924], borderColor: 'rgb(191, 64, 191)' },
+  { label: 'خرداد', data: [1199839, 2840460, 133011, 2658087, 23193, 412230, 2860463], borderColor: 'rgb(207, 159, 255)' },
+  { label: 'تیر', data: [522644, 2518125, 2702348, 2677074, 1054134, 558875, 252180], borderColor: 'rgb(255, 192, 0)' },
+  { label: 'مرداد', data: [1582274, 1205900, 1207485, 720754, 320848, 474922, 1205768], borderColor: 'rgb(255, 234, 0)' },
+  { label: 'شهریور', data: [943639, 2120935, 1360588, 1558972, 2505200, 335548, 2862783], borderColor: 'rgb(252, 245, 95)' },
+  { label: 'مهر', data: [1547321, 2317691, 433862, 1648635, 1608339, 952168, 2812915], borderColor: 'rgb(204, 119, 34)' },
+  { label: 'آبان', data: [2125375, 1572886, 2040858, 339565, 1112818, 249414, 681331], borderColor: 'rgb(255, 165, 0)' },
+  { label: 'آذر', data: [2052414, 2948119, 1912572, 56597, 890514, 2420381, 1024931], borderColor: 'rgb(255, 191, 0)' },
+  { label: 'دی', data: [1458072, 324712, 2590238, 45227, 2837278, 1707186, 400849], borderColor: 'rgb(31, 81, 255)' },
+  { label: 'بهمن', data: [2709020, 1091600, 1996622, 2643337, 261081, 1667235, 1609972], borderColor: 'rgb(100, 149, 237)' },
+  { label: 'اسفند', data: [2957932, 845065, 2868121, 739986, 2494259, 1210415, 1137011], borderColor: 'rgb(173, 216, 230)' },
+];
+
+const LineChart = () => {
+  const data = {
+    labels: ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'],
+    datasets: datasets.map(dataset => ({ ...dataset, fill: false, hidden: true })),
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 14, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+        onClick: (e, legendItem, legend) => {
+          const index = legendItem.datasetIndex;
+          const ci = legend.chart;
+          ci.getDatasetMeta(index).hidden = !ci.getDatasetMeta(index).hidden;
+          ci.update();
+        },
+      },
+      title: {
+        display: true,
+        font: {
+          family: 'Yekan', // Change to your desired font family
+          size: 16, // Change to your desired font size
+          style: 'normal', // Change to 'italic' or 'bold' if desired
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'روزهای هفته',
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 16, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+        ticks: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 12, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'خرجکرد',
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 16, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+        ticks: {
+          font: {
+            family: 'Yekan', // Change to your desired font family
+            size: 12, // Change to your desired font size
+            style: 'normal', // Change to 'italic' or 'bold' if desired
+          },
+        },
+      },
+    },
+  };
 
   return (
-    <ResponsiveLine
-      data={data}
-      theme={{
-        axis: {
-          domain: {
-            line: {
-              stroke: colors.grey[100],
-            },
-          },
-          legend: {
-            text: {
-              fill: colors.grey[100],
-            },
-          },
-          ticks: {
-            line: {
-              stroke: colors.grey[100],
-              strokeWidth: 1,
-            },
-            text: {
-              fill: colors.grey[100],
-            },
-          },
-        },
-        legends: {
-          text: {
-            fill: colors.grey[100],
-          },
-        },
-        tooltip: {
-          container: {
-            color: colors.primary[500],
-          },
-        },
-      }}
-      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-      xScale={{ type: "point" }}
-      yScale={{
-        type: "linear",
-        min: "auto",
-        max: "auto",
-        stacked: true,
-        reverse: false,
-      }}
-      yFormat=" >-.2f"
-      curve="catmullRom"
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        orient: "bottom",
-        tickSize: 0,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation", // added
-        legendOffset: 36,
-        legendPosition: "middle",
-      }}
-      axisLeft={{
-        orient: "left",
-        tickValues: 5, // added
-        tickSize: 3,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "count", // added
-        legendOffset: -40,
-        legendPosition: "middle",
-      }}
-      enableGridX={false}
-      enableGridY={false}
-      pointSize={8}
-      pointColor={{ theme: "background" }}
-      pointBorderWidth={2}
-      pointBorderColor={{ from: "serieColor" }}
-      pointLabelYOffset={-12}
-      useMesh={true}
-      legends={[
-        {
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 100,
-          translateY: 0,
-          itemsSpacing: 0,
-          itemDirection: "left-to-right",
-          itemWidth: 80,
-          itemHeight: 20,
-          itemOpacity: 0.75,
-          symbolSize: 12,
-          symbolShape: "circle",
-          symbolBorderColor: "rgba(0, 0, 0, .5)",
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemBackground: "rgba(0, 0, 0, .03)",
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
-      ]}
-    />
+    <div className='mtfont' style={{ width: '80%', margin: 'auto', height: '200px', fontFamily: 'Yekan' }}>
+      <Line className='mtfont' data={data} options={options} />
+    </div>
   );
 };
 

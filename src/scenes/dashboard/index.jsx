@@ -142,7 +142,7 @@ const Dashboard = () => {
           {/* ROW 2 */}
           <Box
             gridColumn="span 7"
-            gridRow="span 2"
+            gridRow="span 3"
             backgroundColor={colors.primary[400]}
             sx={{ borderRadius: "1rem" }}
           >
@@ -166,8 +166,9 @@ const Dashboard = () => {
                 </Typography>
               </Box>
             </Box>
-            <Box height="250px" m="-20px 0 0 0">
-              <LineChart isDashboard={true} />
+            <Box height="200px" m="-20px 0 0 0">
+            <BarChart isDashboard={true} />
+
             </Box>
           </Box>
 
@@ -197,12 +198,12 @@ const Dashboard = () => {
               نمودار میله ای آنالیز خرجکرد من{" "}
             </Typography>
             <Box height="250px" mt="-20px">
-              <BarChart isDashboard={true} />
+            <LineChart isDashboard={true} />
             </Box>
           </Box>
           <Box
             gridColumn="span 5"
-            gridRow="span 2"
+            gridRow="span 3"
             backgroundColor={colors.primary[400]}
             overflow="auto"
             sx={{ borderRadius: "1rem" }}
