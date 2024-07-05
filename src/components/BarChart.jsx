@@ -1,4 +1,4 @@
-// BarChart.js
+
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -29,16 +29,16 @@ const BarChart = () => {
   };
 
   const options = {
-    indexAxis: 'y', // Change this to 'x' if you want horizontal bars
+    indexAxis: 'y', 
     responsive: true,
     plugins: {
       legend: {
         position: 'top',
         labels: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 14, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 14, 
+            style: 'normal', 
           },
         },
       },
@@ -50,16 +50,16 @@ const BarChart = () => {
           display: true,
           text: 'میزان',
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 16, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 16, 
+            style: 'normal', 
           },
         },
         ticks: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 12, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 12, 
+            style: 'normal', 
           },
         },
       },
@@ -69,16 +69,16 @@ const BarChart = () => {
           display: true,
           text: 'روزهای هفته',
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 16, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 16, 
+            style: 'normal', 
           },
         },
         ticks: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 12, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 12, 
+            style: 'normal', 
           },
         },
       },
@@ -86,7 +86,7 @@ const BarChart = () => {
   };
 
   return (
-    <div className='mtfont' style={{ width: '80%', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className='mtfont' style={{ width: '70%', maxWidth: '1200px', margin: '0 auto' }}>
       <Bar data={data} options={options} />
     </div>
   );

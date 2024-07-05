@@ -4,7 +4,6 @@ import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import WalletIcon from '@mui/icons-material/Wallet';
-import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import BarChart from "../../components/BarChart";
@@ -179,7 +178,9 @@ const Dashboard = () => {
             padding="15px"
             sx={{ borderRadius: "1rem" }}
           >
+            <div style={{justifyContent:"center",alignItems:"center" }}>
             <Pomodoro />
+            </div>
           </Box>
 
           {/* ROW 3 */}
@@ -191,11 +192,11 @@ const Dashboard = () => {
             sx={{ borderRadius: "1rem" }}
           >
             <Typography
-              variant="h5"
+              variant="h3"
               fontWeight="600"
               sx={{ padding: "30px 30px 0 30px" }}
             >
-              نمودار میله ای آنالیز خرجکرد من{" "}
+              نمودار میله ای آنالیز خرجکرد من
             </Typography>
             <Box height="250px" mt="-20px">
             <LineChart isDashboard={true} />
@@ -219,7 +220,7 @@ const Dashboard = () => {
                 variant="h4"
                 fontWeight="600"
                 color={colors.grey[100]}
-                style={{ marginTop: "1rem" }}
+                style={{ marginTop: "1rem",marginRight:"3rem" }}
               >
                 ایجاد لیست سریع
               </Typography>

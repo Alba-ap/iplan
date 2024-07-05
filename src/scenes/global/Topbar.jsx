@@ -17,6 +17,7 @@ const Topbar = () => {
     <div dir="ltr">
       <Box display="flex" justifyContent="space-between" p={2}>
         {/* ICONS */}
+      
         <Box display="flex">
           <IconButton onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "dark" ? (
@@ -26,9 +27,7 @@ const Topbar = () => {
             )}
           </IconButton>
 
-          <IconButton>
-            <SettingsOutlinedIcon />
-          </IconButton>
+        
           <IconButton>
             <PersonOutlinedIcon />
           </IconButton>

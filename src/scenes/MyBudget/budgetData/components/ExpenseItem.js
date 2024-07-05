@@ -19,7 +19,7 @@ const ExpenseItem = (props) => {
           alignItems: "center",
           justifyContent: "center",
           width: "60rem",
-          marginRight: "18.5rem",
+          marginRight: "24.5rem",
 
           color: "black",
           backgroundColor: "#e5e4e2",

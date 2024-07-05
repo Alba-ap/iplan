@@ -32,7 +32,7 @@ const ExpenseList = () => {
           style={{
             marginTop: "2rem",
             width: "60rem",
-            marginRight: "21rem",
+            marginRight: "27rem",
             fontFamily: "Yekan",
           }}
           fullWidth

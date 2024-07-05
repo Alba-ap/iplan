@@ -96,6 +96,7 @@ const App = ({
   };
 
   return (
+    <div className="clock-theme">
     <div className="pomodoro-clock">
       <Settings
         breakLength={breakLength}
@@ -114,12 +115,12 @@ const App = ({
       />
 
       <FolkMe
-        targetURL={githubURL}
         color="#4c4d4e"
         backgroundColor="#fff"
         position="right"
         size="120px"
       />
+    </div>
     </div>
   );
 };

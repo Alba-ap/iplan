@@ -79,6 +79,7 @@ export const MusicPlayerProvider = ({ children }) => {
   return (
     <>
       <MusicPlayerContext.Provider value={value}>
+
         {children}
       </MusicPlayerContext.Provider>
     </>

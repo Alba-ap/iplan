@@ -1,3 +1,4 @@
+// Sidebar.js
 import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -5,7 +6,6 @@ import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import ProfilePicturePicker from "../profile";
@@ -43,7 +43,7 @@ const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("خانه"); // Default selected item
   const [username, setUsername] = useState("کاربر آی پلن");  // Default username
 
   return (
@@ -84,8 +84,10 @@ const Sidebar = () => {
           >
             {!isCollapsed && (
               <Box display="flex" justifyContent="space-between" ml="15px">
+              
                 <Typography variant="h3" color={colors.grey[100]}>
-                  <h2 style={{ marginRight: "5rem" }}>iPlan</h2>
+                  <h2 style={{ marginRight: "5rem" }}>
+                    iPlan</h2>
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />

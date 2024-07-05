@@ -40,7 +40,7 @@ const MyShopping = () => {
         style={{
           alignItems: "center",
           justifyContent: "center",
-          marginRight: "20rem",
+          marginRight: "30rem",
         }}
       >
         <h1>

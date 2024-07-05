@@ -3,7 +3,7 @@
   display: -webkit-flex;
   justify-content: space-around;
   margin-top: 25px;
-  margin-left: 10rem;
+align-items: center;
 }
 
 .settings-section {

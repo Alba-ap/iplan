@@ -1,9 +1,9 @@
-// LineChart.js
+
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 
-// Register the required components for Chart.js
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const datasets = [
@@ -34,9 +34,9 @@ const LineChart = () => {
         position: 'top',
         labels: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 14, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 14, 
+            style: 'normal', 
           },
         },
         onClick: (e, legendItem, legend) => {
@@ -49,9 +49,9 @@ const LineChart = () => {
       title: {
         display: true,
         font: {
-          family: 'Yekan', // Change to your desired font family
-          size: 16, // Change to your desired font size
-          style: 'normal', // Change to 'italic' or 'bold' if desired
+          family: 'Yekan', 
+          size: 16, 
+          style: 'normal', 
         },
       },
     },
@@ -61,16 +61,16 @@ const LineChart = () => {
           display: true,
           text: 'روزهای هفته',
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 16, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 16, 
+            style: 'normal', 
           },
         },
         ticks: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 12, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 12, 
+            style: 'normal', 
           },
         },
       },
@@ -79,16 +79,16 @@ const LineChart = () => {
           display: true,
           text: 'خرجکرد',
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 16, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 16, 
+            style: 'normal', 
           },
         },
         ticks: {
           font: {
-            family: 'Yekan', // Change to your desired font family
-            size: 12, // Change to your desired font size
-            style: 'normal', // Change to 'italic' or 'bold' if desired
+            family: 'Yekan', 
+            size: 12, 
+            style: 'normal', 
           },
         },
       },

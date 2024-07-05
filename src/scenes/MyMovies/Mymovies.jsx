@@ -83,7 +83,7 @@ const MyMovies = () => {
               padding: "8px 30px",
               borderRadius: "100px",
               fontFamily: "Yekan",
-              marginRight: "1rem",
+              marginRight: "2rem",
             }}
             variant="contained"
             color="primary"

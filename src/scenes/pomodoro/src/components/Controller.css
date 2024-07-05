@@ -1,9 +1,8 @@
 .controller {
   display: flex;
   display: -webkit-flex;
-  justify-content: center;
   margin-top: 3rem;
-  margin-left: 8rem;
+  justify-content: center;
 }
 
 .controller button {

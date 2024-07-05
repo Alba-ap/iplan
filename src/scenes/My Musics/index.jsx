@@ -177,7 +177,7 @@ const MyMusic = () => {
         <Card
           variant="outlined"
           sx={{
-            p: 30,
+            p: 40,
             boxShadow: "0 8px 16px rgba(104, 112, 250, 0.5)",
             backgroundColor: "transparent",
             borderRadius: "30px",
@@ -200,7 +200,7 @@ const MyMusic = () => {
               width: { xs: "100%", sm: 300 },
               height: { xs: "100%", sm: 300 },
               borderRadius: "50%",
-              marginRight: "3rem",
+              marginRight: "5rem",
               boxShadow: `-2px 0px 83px 23px rgba(104,112,250,0.52)`,
               WebkitBoxShadow: ` -2px 0px 83px 23px rgba(104,112,250,0.52)`,
               MozBoxShadow: ` -2px 0px 83px 23px rgba(104,112,250,0.52)`
@@ -289,6 +289,8 @@ const MyMusic = () => {
         </Card>
       </PlayerBox>
       <TrackListBox>
+      <h2 style={{marginRight:"2rem"}} dir="rtl">لیست موسیقی های Lofi</h2>
+
         {tracks.map((track, index) => (
           <TrackItem
             key={index}
